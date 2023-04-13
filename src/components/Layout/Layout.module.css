@@ -1,0 +1,26 @@
+.main{
+  background: #f3f3f3;
+  background-image: url('../../assets/mainbg.svg');
+  min-height: 100vh;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.wrapper{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+@media screen and (min-width:768px) {
+  .main{
+    margin-left: 18rem;
+    width: calc(100% - 18rem);
+  }
+}
