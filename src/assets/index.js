@@ -11,6 +11,8 @@ import mainbg from './mainbg.svg'
 import siteLogo from './site-logo.png'
 import display from './display.png'
 import free from './free.png'
+import loadingPay from './loading.gif'
+import success from './success.png'
 
 export default {
   'Candy Cards': CandyCards,
@@ -25,5 +27,7 @@ export default {
   mainbg,
   siteLogo,
   display,
-  free
+  free,
+  loadingPay,
+  success
 }

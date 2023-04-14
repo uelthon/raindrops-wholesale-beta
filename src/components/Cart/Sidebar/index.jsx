@@ -7,6 +7,8 @@ const Sidebar = ({ children, show, setShow }) => {
   const handleClose = () => setShow(false)
   const handleOpen = () => setShow(true)
 
+  const totalQuantity = cart.reduce((prev, curr) => prev + curr.quantity, 0)
+
   return (
     <>
       <div className='indicator'>
@@ -14,7 +16,8 @@ const Sidebar = ({ children, show, setShow }) => {
           className='btn btn-circle btn-lg bg-[#55a46c] border-none hover:bg-primary fixed bottom-12 right-12 shadow-xl'
           onClick={handleOpen}
         >
-          <span className='indicator-item badge badge-secondary badge-lg shadow-xl'>{cart.length}</span>
+          <span className='indicator-item badge badge-secondary badge-lg shadow-xl'>{totalQuantity}
+          </span>
           <AiOutlineShoppingCart className='text-3xl' />
         </button>
       </div>

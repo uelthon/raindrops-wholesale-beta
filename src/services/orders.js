@@ -10,6 +10,12 @@ const getOrdersByUserId = async (id, token) => {
   return data
 }
 
+const createOrder = async (body) => {
+  const { data } = await axios.post(`${baseUrl}/public/order/create`, body)
+  return data
+}
+
 export default {
-  getOrdersByUserId
+  getOrdersByUserId,
+  createOrder
 }

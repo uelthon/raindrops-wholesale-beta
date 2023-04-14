@@ -3,34 +3,45 @@ import { AiOutlineClose } from 'react-icons/ai'
 import Sidebar from './Sidebar'
 import useCartStore from '../../stores/cartStore'
 import CartItems from './CartItems'
+import { Link } from 'react-router-dom'
 
 const Cart = () => {
   const { subTotal, shipping, total } = useCartStore()
   const [show, setShow] = useState(false)
   return (
     <Sidebar show={show} setShow={setShow}>
-      <div className='relative h-full flex flex-col justify-start gap-2'>
-        <div className='flex items-center gap-1 text-sm font-bold cursor-pointer text-error' onClick={() => setShow(false)}>
-          <AiOutlineClose className='text-xl' /> <span>Close</span>
+      <div className='relative h-full flex flex-col justify-start gap-6'>
+        <div className='flex items-center justify-between'>
+          <p className='text-xl font-medium'>
+            Shopping cart
+          </p>
+          <div className='cursor-pointer' onClick={() => setShow(false)}>
+            <AiOutlineClose className='text-2xl text-error' />
+          </div>
         </div>
-        <p className='text-2xl font-bold text-center text-[#707070]'>Cart</p>
         <CartItems />
-        <div className='flex flex-col justify-start w-full gap-2 absolute bottom-0 left-0'>
-          <div className='divider' />
+        <div className='flex flex-col justify-start w-full gap-2 absolute bottom-0 left-0 font-medium'>
+          <div className='divider m-0' />
           <div className='flex items-center justify-between'>
-            <p className='text-xl font-bold'>Sub Total</p>
-            <p className='text-xl font-bold'>${subTotal}</p>
+            <p>Sub Total</p>
+            <p>${subTotal.toFixed(2)}</p>
           </div>
           <div className='flex items-center justify-between'>
-            <p className='text-xl font-bold'>Shipping rates</p>
-            <p className='text-xl font-bold'>${shipping}</p>
+            <p>Shipping rates</p>
+            <p>${shipping.toFixed(2)}</p>
           </div>
           <div className='flex items-center justify-between'>
-            <p className='text-xl font-bold'>Total</p>
-            <p className='text-xl font-bold'>${total}</p>
+            <p>Total</p>
+            <p>${total.toFixed(2)}</p>
           </div>
-          <p className='text-center font-bold'>FREE Delivery on Orders Over $1.000</p>
-          <button className='btn btn-secondary'>GO TO CHECKOUT</button>
+          <p className='text-center'>FREE Delivery on Orders Over $1.000</p>
+          <Link
+            className='btn btn-primary'
+            to='/payment'
+            onClick={() => setShow(false)}
+          >
+            GO TO CHECKOUT
+          </Link>
         </div>
       </div>
     </Sidebar>

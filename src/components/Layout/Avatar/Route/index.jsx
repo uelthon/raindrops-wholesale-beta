@@ -1,5 +1,5 @@
 import React from 'react'
-import { AiOutlineShoppingCart, AiOutlineLock } from 'react-icons/ai'
+import { AiOutlineShoppingCart, AiOutlineLock, AiOutlineCreditCard } from 'react-icons/ai'
 import { HiOutlineUserCircle } from 'react-icons/hi'
 import { BsGraphUp } from 'react-icons/bs'
 import { useLocation } from 'react-router-dom'
@@ -27,6 +27,12 @@ const links = {
     name: 'SALES HISTORY',
     path: '/dashboard-orders',
     icon: <BsGraphUp className='text-2xl' />,
+    default: false
+  },
+  '/payment': {
+    name: 'PAYMENT',
+    path: '/payment',
+    icon: <AiOutlineCreditCard className='text-2xl' />,
     default: false
   }
 }

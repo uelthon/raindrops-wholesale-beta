@@ -47,14 +47,14 @@
 .link{
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  justify-content: center;
+  gap: 1.5rem;
   background-color: #ffffff;
   color: #6c55a4;
   width: 100%;
   padding: 1rem 2rem;
   border-radius: 20px;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .link.active{
@@ -101,9 +101,9 @@
     color: #5e5c5c;
     font-size: 0.9rem;
     font-weight: 800;
-    gap: 0;
+    gap: 1rem;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 0;
   }
   .link svg{

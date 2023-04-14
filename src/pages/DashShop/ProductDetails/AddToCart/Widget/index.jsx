@@ -15,6 +15,7 @@ const Widget = ({ product }) => {
       name: product?.name,
       image: product?.images?.url[0],
       price: Number(product?.variantsList[variant]?.wholesalePrice),
+      type: product?.variantsList[variant]?.name,
       quantity
     }
     mutateCart(item)
