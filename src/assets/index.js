@@ -13,6 +13,8 @@ import display from './display.png'
 import free from './free.png'
 import loadingPay from './loading.gif'
 import success from './success.png'
+import defaultCase from './default-case.png'
+import defaultDisplay from './default-display.png'
 
 export default {
   'Candy Cards': CandyCards,
@@ -29,5 +31,7 @@ export default {
   display,
   free,
   loadingPay,
-  success
+  success,
+  defaultCase,
+  defaultDisplay
 }

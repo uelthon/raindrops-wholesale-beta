@@ -6,6 +6,7 @@ import AddToCart from './AddToCart'
 import Nutrition from './Nutrition'
 
 import styles from './ProductDetails.module.css'
+import Loader from '../../../components/Loader'
 
 const ProductDetails = () => {
   const { value } = useShopStore()
@@ -14,7 +15,7 @@ const ProductDetails = () => {
     skip: !value.product
   })
 
-  if (loading) return <h1>Loading...</h1>
+  if (loading) return <Loader height='25vh' />
   if (!value.product || !data) return null
 
   return (

@@ -8,7 +8,7 @@ const Categories = () => {
   return (
     <div className={styles.container}>
       {loading && [1, 2, 3, 4, 5, 6, 7, 8].map(e => <CategoryCard key={e} />)}
-      {data && data.map(d =>
+      {(data && !loading) && data.map(d =>
         <CategoryCard
           key={d.name}
           name={d.name}

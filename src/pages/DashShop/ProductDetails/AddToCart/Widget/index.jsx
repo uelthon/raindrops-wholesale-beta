@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 import useCartStore from '../../../../../stores/cartStore'
+import assets from '../../../../../assets/index'
 
 const Widget = ({ product }) => {
   const [quantity, setQuantity] = useState(0)
@@ -13,7 +14,7 @@ const Widget = ({ product }) => {
       idVariantProduct: Number(product?.variantsList[variant]?.id),
       idProduct: product?.id,
       name: product?.name,
-      image: product?.images?.url[0],
+      image: product?.variantsList[variant]?.images?.url ? product?.variantsList[variant]?.images?.url : product?.images?.url[0],
       price: Number(product?.variantsList[variant]?.wholesalePrice),
       type: product?.variantsList[variant]?.name,
       quantity
@@ -21,13 +22,18 @@ const Widget = ({ product }) => {
     mutateCart(item)
   }
 
+  const image = product?.variantsList[variant]?.images?.url ? product?.variantsList[variant]?.images?.url : product?.variantsList[variant]?.name === 'CASE' ? assets.defaultCase : assets.defaultDisplay
+
   return (
     <div className='flex flex-col justify-start gap-2'>
       <div className='flex items-center justify-center flex-wrap gap-4 md:justify-between'>
         <div className='flex flex-col justify-start gap-1'>
           <p className='text-sm text-gray-400 font-bold'>UPC: {product?.upc}</p>
           <div className='flex items-center gap-4'>
-            <img className='w-16 h-16 object-contain' src={product?.images?.url[0]} />
+            <img
+              className='w-16 h-16 object-contain'
+              src={image}
+            />
             <select
               defaultValue={variant}
               className='select select-bordered w-auto'

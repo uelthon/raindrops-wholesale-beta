@@ -6,7 +6,7 @@ import './styles/global.css'
 import App from './App'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Router basename='/beta-dashboard'>
+  <Router basename='/dashboard'>
     <App />
   </Router>
 )

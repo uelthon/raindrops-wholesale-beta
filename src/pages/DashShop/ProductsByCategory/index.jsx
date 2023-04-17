@@ -3,6 +3,7 @@ import ProductCard from '../../../components/Cards/ProductCard'
 import useShopStore from '../../../stores/shopStore'
 import useGetProductsByCategory from '../../../hooks/useGetProductsByCategory'
 import styles from './ProductsByCategory.module.css'
+import Loader from '../../../components/Loader'
 
 const ProductsByCategory = () => {
   const { value } = useShopStore()
@@ -11,7 +12,7 @@ const ProductsByCategory = () => {
     skip: !value.category || value.product
   })
 
-  if (loading) return <h1>Loading...</h1>
+  if (loading) return <Loader height='25vh' />
   if (!value.category || value.product) return null
 
   return (

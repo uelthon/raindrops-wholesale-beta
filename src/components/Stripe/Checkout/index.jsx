@@ -35,6 +35,7 @@ const Checkout = () => {
     setLayout('loadingPay', true)
     console.log(address)
 
+    console.log('total', total)
     try {
       const clientSecret = await api.payment.paymentIntent({
         amount: total * 100

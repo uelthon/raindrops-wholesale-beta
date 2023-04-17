@@ -1,6 +1,8 @@
 import React from 'react'
 import useUserStore from '../../stores/userStore'
 import useGetOrdersByUserId from '../../hooks/useGetOrdersByUserId'
+import Loader from '../../components/Loader'
+import RowOrder from './RowOrder'
 
 const DashOrders = () => {
   const { value } = useUserStore()
@@ -24,7 +26,7 @@ const DashOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {loading && <tr><td colSpan={6}>Loading...</td></tr>}
+            {loading && <tr><td colSpan={6} className='text-center'><Loader height='25vh' /></td></tr>}
             {data?.length > 0 && data.map(o => {
               const order = o.orderNumber
               const total = o.totalAmount
@@ -32,16 +34,16 @@ const DashOrders = () => {
               const status = o.orderStatus.name
               const tracking = o.tracking ? o.tracking : ''
               return (
-                <tr key={order}>
-                  <td>{order}</td>
-                  <td>${total}</td>
-                  <td>{status}</td>
-                  <td>{tracking}</td>
-                  <td>{date}</td>
-                  <td>
-                    <a>View details</a>
-                  </td>
-                </tr>
+                <RowOrder
+                  key={order}
+                  order={order}
+                  total={total + o.shippingPrice}
+                  date={date}
+                  status={status}
+                  tracking={tracking}
+                  orderDetails={o.orderDetails}
+                  shipping={o.shippingPrice}
+                />
               )
             })}
           </tbody>
