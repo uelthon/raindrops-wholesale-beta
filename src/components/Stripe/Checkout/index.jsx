@@ -15,7 +15,7 @@ const Checkout = () => {
   const stripe = useStripe()
   const elements = useElements()
   const { value } = useUserStore()
-  const { total, cart, shipping, subTotal } = useCartStore()
+  const { total, cart, shipping, subTotal, reset } = useCartStore()
   const { mutate } = useCreateOrder()
   const { setLayout } = useLayoutStore()
   const navigate = useNavigate()
@@ -101,6 +101,7 @@ const Checkout = () => {
           setLayout('loadingPay', false)
           setLayout('successPay', true)
           navigate('/dashboard-shop')
+          reset()
           console.log(data)
         },
         onError: (error) => {
@@ -118,8 +119,18 @@ const Checkout = () => {
   return (
     <div>
       <form onSubmit={handleSubmit} className='flex flex-col justify-start gap-4 w-full'>
-        <AddressForm />
-        <CardInput />
+        <div>
+          <label className='label pl-0'>
+            <span className='label-text font-semibold text-base'>Shipping address</span>
+          </label>
+          <AddressForm />
+        </div>
+        <div>
+          <label className='label pl-0'>
+            <span className='label-text font-semibold text-base'>Card information</span>
+          </label>
+          <CardInput />
+        </div>
         <button
           className='btn btn-primary'
           disabled={!stripe || !elements || loading || total === 0 || cart.length === 0}

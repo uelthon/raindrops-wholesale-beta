@@ -1,14 +1,20 @@
 import React, { useState } from 'react'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
+import { toast } from 'react-toastify'
 import useCartStore from '../../../../../stores/cartStore'
 import assets from '../../../../../assets/index'
 
 const Widget = ({ product }) => {
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
   const [variant, setVariant] = useState(0)
   const { mutateCart } = useCartStore()
 
   const handleClick = () => {
+    if (product.inStock <= 0) {
+      return toast.error('Sold Out', {
+        autoClose: 2000
+      })
+    }
     if (quantity <= 0) return
     const item = {
       idVariantProduct: Number(product?.variantsList[variant]?.id),
@@ -20,6 +26,9 @@ const Widget = ({ product }) => {
       quantity
     }
     mutateCart(item)
+    toast.success('Added to Cart', {
+      autoClose: 1000
+    })
   }
 
   const image = product?.variantsList[variant]?.images?.url ? product?.variantsList[variant]?.images?.url : product?.variantsList[variant]?.name === 'CASE' ? assets.defaultCase : assets.defaultDisplay
@@ -50,7 +59,7 @@ const Widget = ({ product }) => {
           <div className='flex items-center gap-4'>
             <button
               className='btn btn-primary bg-drops text-white text-xl border-none' onClick={() => {
-                if (quantity === 0) return
+                if (quantity <= 1) return
                 setQuantity(quantity - 1)
               }}
             >
@@ -64,14 +73,14 @@ const Widget = ({ product }) => {
         </div>
       </div>
       <div className='flex items-center justify-center flex-wrap gap-4 md:justify-between'>
-        <p className='text-base text-gray-600 font-bold'>Your Wholesale price $ {product?.variantsList[variant]?.wholesalePrice}</p>
-        <p className='text-base text-gray-600 font-bold'>Total $ {Number(product?.variantsList[variant]?.wholesalePrice) * quantity}</p>
+        <p className='text-base text-gray-600 font-bold'>Your Wholesale price $ {product?.variantsList[variant]?.wholesalePrice.toFixed(2)}</p>
+        <p className='text-base text-gray-600 font-bold'>Total $ {(Number(product?.variantsList[variant]?.wholesalePrice) * quantity).toFixed(2)}</p>
       </div>
       <button
-        className='btn btn-warning text-sm font-bold text-purple-drops w-full md:w-[50%]'
+        className={`btn ${product.inStock <= 0 ? 'btn-disabled' : 'btn-warning'} text-sm font-bold text-purple-drops w-full md:w-[50%]`}
         onClick={handleClick}
       >
-        Add to Cart
+        {product.inStock <= 0 ? 'Sold Out' : 'Add to Cart'}
       </button>
     </div>
   )

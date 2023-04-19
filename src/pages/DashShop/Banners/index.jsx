@@ -15,7 +15,7 @@ const Banners = () => {
       </div>
       <div className='flex flex-col justify-start items-center'>
         <p className='text-pink-600 font-extrabold text-center text-2xl'>
-          There is much more happiness<br />with <span className='text-purple-drops'>Rain drops Candy!</span>
+          There is much more happiness<br />with <span className='text-purple-drops'>Raindrops Candy!</span>
         </p>
       </div>
     </div>

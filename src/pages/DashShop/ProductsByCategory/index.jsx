@@ -23,6 +23,7 @@ const ProductsByCategory = () => {
           name={e.name}
           image={e.images.url[0]}
           slug={e.slug}
+          inStock={e.inStock}
         />
       )}
     </div>

@@ -20,9 +20,15 @@ const ProductDetails = () => {
 
   return (
     <div className={styles.container}>
-      {(!data?.images) ? null : <Images images={data.images.url} />}
-      {!data ? null : <AddToCart product={data} />}
-      {(!data?.ingredients && !data?.dimensions && !data?.nutritionFacts) ? null : <Nutrition ingredients={data.ingredients} dimensions={data.dimensions} nutritionFacts={data.nutritionFacts} />}
+      {(!data?.images)
+        ? null
+        : <Images images={data.images.url} />}
+      {!data
+        ? null
+        : <AddToCart product={data} />}
+      {(!data?.ingredients && !data?.dimensions && !data?.nutritionFacts)
+        ? null
+        : <Nutrition ingredients={data.ingredients} dimensions={data.dimensions} nutritionFacts={data.nutritionFacts} />}
     </div>
   )
 }
