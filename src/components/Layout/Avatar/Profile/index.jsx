@@ -1,5 +1,4 @@
 import React from 'react'
-import { IoMdNotificationsOutline } from 'react-icons/io'
 import { FaUserCircle } from 'react-icons/fa'
 import useGetUser from '../../../../hooks/useGetUser'
 
@@ -13,9 +12,6 @@ const Profile = () => {
 
   return (
     <div className='flex items-center gap-4 text-purple-drops'>
-      <div className='rounded-full p-2 shadow-sm bg-white'>
-        <IoMdNotificationsOutline className='text-2xl' />
-      </div>
       <div className='dropdown dropdown-end cursor-pointer'>
         <div tabIndex={0} className='flex items-center gap-4 px-6 h-12 bg-white rounded-2xl shadow-sm'>
           <div className='avatar'>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 import { toast } from 'react-toastify'
+import ImageViewer from '../../../../../components/ImageViewer'
 import useCartStore from '../../../../../stores/cartStore'
 import assets from '../../../../../assets/index'
 
@@ -31,7 +32,7 @@ const Widget = ({ product }) => {
     })
   }
 
-  const image = product?.variantsList[variant]?.images?.url ? product?.variantsList[variant]?.images?.url : product?.variantsList[variant]?.name === 'CASE' ? assets.defaultCase : assets.defaultDisplay
+  const image = product?.variantsList[variant]?.images?.url ? product?.variantsList[variant]?.images?.url : product?.variantsList[variant]?.name === 'CASE' ? assets.defaultCase : product?.images?.url[0]
 
   return (
     <div className='flex flex-col justify-start gap-2'>
@@ -39,7 +40,7 @@ const Widget = ({ product }) => {
         <div className='flex flex-col justify-start gap-1'>
           <p className='text-sm text-gray-400 font-bold'>UPC: {product?.upc}</p>
           <div className='flex items-center gap-4'>
-            <img
+            <ImageViewer
               className='w-16 h-16 object-contain'
               src={image}
             />

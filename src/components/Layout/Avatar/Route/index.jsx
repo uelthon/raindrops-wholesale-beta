@@ -42,7 +42,7 @@ const Route = () => {
   return (
     <div className='flex items-center gap-4 px-4 bg-white rounded-2xl shadow-sm text-purple-drops h-12'>
       {links[router.pathname]?.icon}
-      <p className='hidden text-md font-bold md:block'>
+      <p className='text-md font-bold md:block'>
         {links[router.pathname]?.name}
       </p>
     </div>

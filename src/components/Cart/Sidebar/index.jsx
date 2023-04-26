@@ -11,7 +11,7 @@ const Sidebar = ({ children, show, setShow }) => {
 
   return (
     <>
-      <div className='indicator'>
+      <div className='indicator block'>
         <button
           className='btn btn-circle btn-lg bg-[#55a46c] border-none hover:bg-primary fixed bottom-12 right-12 shadow-xl'
           onClick={handleOpen}

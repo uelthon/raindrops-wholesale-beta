@@ -8,11 +8,11 @@ const useGetUser = ({ skip } = { skip: false }) => {
   const { add, value } = useUserStore()
 
   const fetchData = async () => {
-    // const currentVersion = 4
+    const currentVersion = 4
     const email = JSON.parse(window.localStorage.getItem('email'))
     const token = JSON.parse(window.localStorage.getItem('token'))
-    // const version = JSON.parse(window.localStorage.getItem('version'))
-    if (!email || !token) {
+    const version = JSON.parse(window.localStorage.getItem('version'))
+    if (!email || !token || (Number(currentVersion) !== Number(version))) {
       window.localStorage.removeItem('email')
       window.localStorage.removeItem('token')
       window.location.href = '/'

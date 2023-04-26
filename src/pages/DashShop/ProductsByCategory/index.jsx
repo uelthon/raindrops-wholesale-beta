@@ -17,14 +17,20 @@ const ProductsByCategory = () => {
 
   return (
     <div className={styles.container}>
-      {data && data.map(e =>
-        <ProductCard
-          key={e.id}
-          name={e.name}
-          image={e.images.url[0]}
-          slug={e.slug}
-          inStock={e.inStock}
-        />
+      {data && data.map(e => {
+        if (e.statusProduct.name === 'Draft') {
+          return null
+        }
+        return (
+          <ProductCard
+            key={e.id}
+            name={e.name}
+            image={e.images.url[0]}
+            slug={e.slug}
+            inStock={e.inStock}
+          />
+        )
+      }
       )}
     </div>
   )

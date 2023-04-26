@@ -71,6 +71,10 @@
   font-size: 2rem;
 }
 
+.back{
+  visibility: hidden;
+}
+
 @media screen and (min-width:768px){
   .back{
     display: none;

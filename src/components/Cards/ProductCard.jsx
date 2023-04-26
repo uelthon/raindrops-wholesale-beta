@@ -13,11 +13,11 @@ const ProductCard = ({ image, name, slug }) => {
 
   return (
     <div
-      className='flex flex-col justify-start items-center p-1 cursor-pointer gap-4 md:gap-0'
+      className='flex flex-col justify-start items-center p-1 cursor-pointer gap-4'
       onClick={handleClick}
     >
-      <img src={image} alt={name} className='h-[117px] object-contain' />
-      <p className='text-xl text-purple-drops font-bold text-center md:text-xs'>{name}</p>
+      <img src={image} alt={name} className='h-[117px] object-contain md:max-h-[297px]' />
+      <p className='text-xl text-purple-drops font-bold text-center'>{name}</p>
     </div>
   )
 }
